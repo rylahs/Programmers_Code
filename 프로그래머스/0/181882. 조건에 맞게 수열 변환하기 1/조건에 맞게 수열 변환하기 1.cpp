@@ -4,12 +4,13 @@
 using namespace std;
 
 vector<int> solution(vector<int> arr) {
-    for (auto& e : arr)
+    for (auto& val : arr) 
     {
-        if (e >= 50 && e % 2 == 0)
-            e /= 2;
-        else if (e < 50 && e % 2 == 1)
-            e *= 2;
+        bool cond1 = (val >= 50 && (val & 1) == 0);
+        bool cond2 = (val < 50 && (val & 1) != 0);
+    
+
+    val = (val * !cond1 * !cond2) + ((val >> 1) * cond1) + ((val << 1) * cond2);
     }
     
     return arr;
